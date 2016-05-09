@@ -15,7 +15,8 @@ public class Application
 {
 		public static void main(String[] args)
 		{
-				ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new ClassPathResource("resources/spring-config.xml").getPath());
+				ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new ClassPathResource("spring-config.xml").getPath());
+		//	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 				PersonRepo personRepo = (PersonRepo)context.getBean("personRepo");
 				
 				Person person = new Person();

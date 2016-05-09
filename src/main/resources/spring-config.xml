@@ -8,13 +8,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<!-- Redis Connection Factory -->
-	<bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-			p:use-pool="true" />
+	<!-- Redis Connection Factory p:use-pool="true" -->
+<!-- 	<bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" -->
+<!-- 			p:host-name="192.168.99.100" p:port="6379" p:password=""  /> -->
+<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" p:host-name="192.168.99.100" p:port="6379" />
 			
 	<!-- Redis Template Configuration-->
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
-			p:connection-factory-ref="jedisConnFactory" />
+			p:connection-factory-ref="jedisConnectionFactory" />
 			
 	<bean id="personRepo" class="com.jcg.examples.repo.impl.PersonRepoImpl">
 		<property name="redisTemplate" ref="redisTemplate" />	
